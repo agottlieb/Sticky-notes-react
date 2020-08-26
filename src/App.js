@@ -1,18 +1,10 @@
 import React from "react";
+import Header from "./Header.js";
 
 var App = () => (
   <div>
-    <header className="app-header">
-      <h1 className="app-header__title">Super Sticky Notes</h1>
-      <aside className="app-header__controls">
-        <button className="add-new">+ New Note</button>
-        <input
-          type="text"
-          placeholder="Type here to search..."
-          className="search"
-        />
-      </aside>
-    </header>
+    <Header />
+
     <ul className="notes-list">
       <li className="note">
         <input type="text" placeholder="Title" className="note__title" />
