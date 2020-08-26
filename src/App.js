@@ -2,28 +2,32 @@ import React from "react";
 
 var App = () => (
   <div>
-    <header>
-      <h1>Super Sticky Notes</h1>
+    <header className="app-header__controls">
+      <h1 className="app-header__title">Super Sticky Notes</h1>
       <aside>
-        <button>+ New Note</button>
-        <input type="text" placeholder="Type here to search..." />
+        <button className="add-new">+ New Note</button>
+        <input
+          type="text"
+          placeholder="Type here to search..."
+          className="search"
+        />
       </aside>
     </header>
-    <ul>
-      <li>
-        <input type="text" placeholder="Title" />
-        <textarea placeholder="Description..." />
-        <span>X</span>
+    <ul className="notes-list">
+      <li className="note">
+        <input type="text" placeholder="Title" className="note__title" />
+        <textarea placeholder="Description..." className="note__description" />
+        <span className="note__delete">X</span>
       </li>
-      <li>
-        <input type="text" placeholder="Title" />
-        <textarea placeholder="Description..." />
-        <span>X</span>
+      <li className="note">
+        <input type="text" placeholder="Title" className="note__title" />
+        <textarea placeholder="Description..." className="note__description" />
+        <span className="note__delete">X</span>
       </li>
-      <li>
-        <input type="text" placeholder="Title" />
-        <textarea placeholder="Description..." />
-        <span>X</span>
+      <li className="note">
+        <input type="text" placeholder="Title" className="note__title" />
+        <textarea placeholder="Description..." className="note__description" />
+        <span className="note__delete">X</span>
       </li>
     </ul>
   </div>
