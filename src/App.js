@@ -2,9 +2,9 @@ import React from "react";
 
 var App = () => (
   <div>
-    <header className="app-header__controls">
+    <header className="app-header">
       <h1 className="app-header__title">Super Sticky Notes</h1>
-      <aside>
+      <aside className="app-header__controls">
         <button className="add-new">+ New Note</button>
         <input
           type="text"
