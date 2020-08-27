@@ -31,8 +31,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <NoteList />
+        <Header searchText={this.state.searchText} />
+        <NoteList notes={this.state.notes} />
       </div>
     );
   }
