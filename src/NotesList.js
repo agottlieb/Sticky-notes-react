@@ -1,12 +1,11 @@
 import React from "react";
 import Note from "./Note.js";
 
-var NotesList = () => (
-  <ul className="notes-list">
-    <Note />
-    <Note />
-    <Note />
-  </ul>
-);
+const renderNote = (note) => <Note note={note} key={note.id} />;
+
+var NotesList = (props) => {
+  var noteElements = props.notes.map(renderNote);
+  return <ul className="notes-list">{noteElements} </ul>;
+};
 
 export default NotesList;
