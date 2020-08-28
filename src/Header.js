@@ -1,6 +1,6 @@
 import React from "react";
 
-var Header = () => (
+var Header = (props) => (
   <header className="app-header">
     <h1 className="app-header__title">Super Sticky Notes</h1>
     <aside className="app-header__controls">
@@ -9,6 +9,7 @@ var Header = () => (
         type="text"
         placeholder="Type here to search..."
         className="search"
+        value={props.searchText}
       />
     </aside>
   </header>
