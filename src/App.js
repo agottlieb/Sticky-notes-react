@@ -27,11 +27,37 @@ class App extends Component {
     this.setState({ notes: newNotes });
   };
 
+  onType = () => {
+    /* event handler to update text fields in sticky notes
+      - editMeId: the id of the note that the user typed in
+      - updatedKey: which field was edited? 'title' or 'description'
+      - updatedValue: new value of edited field */
+    var updateIdMatch = (note) => {
+      if (note.id !== editMeId) {
+        return note;
+      } else {
+        if (updatedKey === "title") {
+          return {
+            ...note,
+            title: updatedValue
+          };
+        } else {
+          return {
+            ...note,
+            description: updatedValue
+          };
+        }
+      }
+    };
+    var updatedNotes = this.state.notes.map(updateIdMatch);
+    this.setState({ notes: updatedNotes });
+  };
+
   render() {
     return (
       <div>
         <Header searchText={this.state.searchText} addNote={this.addNote} />
-        <NoteList notes={this.state.notes} />
+        <NoteList notes={this.state.notes} onType={this.onType} />
       </div>
     );
   }
