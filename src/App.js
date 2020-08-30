@@ -8,25 +8,13 @@ class App extends Component {
   state = {
     notes: [
       {
-        id: 0,
-        title: "drink",
-        description: "cool refreshing water",
-        doesMatchSearch: true
-      },
-      {
-        id: 1,
-        title: "listen",
-        description: "all the podcasts",
-        doesMatchSearch: true
-      },
-      {
-        id: 2,
-        title: "code",
-        description: "build an awesome ui",
+        id: Date.now(),
+        title: "",
+        description: "",
         doesMatchSearch: true
       }
     ],
-    searchText: "find me"
+    searchText: ""
   };
   addNote = () => {
     var newNote = {
@@ -38,17 +26,7 @@ class App extends Component {
     var newNotes = [newNote, ...this.state.notes];
     this.setState({ notes: newNotes });
   };
-  /*  addNote = () => {
-    var newNote = {
-      id: Date.now(),
-      title: "",
-      description: "",
-      doesMatchSearch: true
-    };
-    var newNotes = [newNote, ...this.state.notes];
-    this.setState({ notes: newNotes });
-  };
-*/
+
   render() {
     return (
       <div>
