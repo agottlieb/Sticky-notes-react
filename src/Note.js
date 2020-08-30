@@ -7,13 +7,11 @@ import React, { Component } from "react";
   --updates occur in the state of the app compononent 
 */
 class Note extends Component {
-  //method to update the title
   updateTitle = (e) => {
     var updatedValue = e.target.value;
     var editMeId = this.props.note.id;
     this.props.onType(editMeId, "title", updatedValue);
   };
-  //method to update the description
   updateDescription = (e) => {
     var updatedValue = e.target.value;
     var editMeId = this.props.note.id;
@@ -24,16 +22,16 @@ class Note extends Component {
       <li className="note">
         <input
           type="text"
-          placeholder="Title"
-          className="note__title"
           value={this.props.note.title}
           onChange={this.updateTitle}
+          placeholder="Title"
+          className="note__title"
         />
         <textarea
-          placeholder="Description..."
-          className="note__description"
           value={this.props.note.description}
           onChange={this.updateDescription}
+          placeholder="Description..."
+          className="note__description"
         />
         <span className="note__delete">X</span>
       </li>
