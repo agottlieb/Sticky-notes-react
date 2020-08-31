@@ -45,6 +45,40 @@ class App extends Component {
     var updatedNotes = this.state.notes.map(updateIdMatch);
     this.setState({ notes: updatedNotes });
   };
+  //method to search for matches in the sticky notes
+  onSearch = (e) => {
+    //sets the typed words in search box to lowercase
+    var searchText = e.target.value.toLowerCase();
+    //mapping function to get access to all the notes
+    var updatedNotes = this.state.notes.map((note) => {
+      //when searchText is empty, leave up the notes/doesMatchSearch is true
+      if (!searchText) {
+        return {
+          ...note,
+          doesMatchSearch: true
+        };
+        //otherwise, here's how we find titles and descr. that match
+      } else {
+        //set the font to lowercase in title and descr.
+        var title = note.title.toLowerCase();
+        var description = note.description.toLowerCase();
+        //it's a match when it includes characters from searchText
+        var titleMatch = title.includes(searchText);
+        var descriptionMatch = description.includes(searchText);
+        //can match the title or the description
+        var hasMatch = titleMatch || descriptionMatch;
+        //returns the entire note when it has either category
+        return {
+          ...note,
+          doesMatchSearch: hasMatch
+        };
+      }
+    });
+    this.setState({
+      searchText: searchText,
+      notes: updatedNotes
+    });
+  };
   render() {
     return (
       <div>
