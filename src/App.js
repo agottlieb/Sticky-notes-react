@@ -20,20 +20,25 @@ class App extends Component {
     var newNotes = [newNote, ...this.state.notes];
     this.setState({ notes: newNotes });
   };
+  //event handle to update both fields of already-made sticky notes
   onType = (editMeId, updatedKey, updatedValue) => {
     /* event handler to update text fields in sticky notes
       - editMeId: the id of the note that the user typed in
       - updatedKey: which field was edited? 'title' or 'description'
       - updatedValue: new value of edited field */
+    //variable that incorporates the whole process- no change, title, descr. change
     var updateIdMatch = (note) => {
+      //if nothing has been edited, return the original note
       if (note.id !== editMeId) {
         return note;
       } else {
+        //if the title was changed, return it and the description
         if (updatedKey === "title") {
           return {
             ...note,
             title: updatedValue
           };
+          //if not the title, it is the description that has changed, return it
         } else {
           return {
             ...note,
