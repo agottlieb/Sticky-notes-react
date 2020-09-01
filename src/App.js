@@ -82,13 +82,26 @@ class App extends Component {
     });
   };
   //method to remove notes by removing the note's ID
-    remove = deleteMeId =>  {
-        var notIdMatch = note => note.id !== deleteMeId;
-        var updatedNotes = this.state.notes.filter(notIdMatch);
-        this.setState({ notes: updatedNotes });
-    };
+  remove = (deleteMeId) => {
+    var notIdMatch = (note) => note.id !== deleteMeId;
+    var updatedNotes = this.state.notes.filter(notIdMatch);
+    this.setState({ notes: updatedNotes });
+  };
 
+  //save notes to storage after each render
+  componentDidUpdate() {
+    var stringifiedNotes = JSON.stringify(this.state.notes);
+    localStorage.setItem("savedNotes", stringifiedNotes);
+  }
 
+  //read saved data from local storage and pass to comp. state
+  componentDidMount() {
+    var stringifiedNotes = localStorage.getItem("savedNotes");
+    if (stringifiedNotes) {
+      var savedNotes = JSON.parse(stringifiedNotes);
+      this.setState({ notes: savedNotes });
+    }
+  }
   render() {
     return (
       <div>
@@ -97,8 +110,11 @@ class App extends Component {
           addNote={this.addNote}
           onSearch={this.onSearch}
         />
-        <NotesList notes={this.state.notes} onType={this.onType} 
-        remove={this.remove}/>
+        <NotesList
+          notes={this.state.notes}
+          onType={this.onType}
+          remove={this.remove}
+        />
       </div>
     );
   }
