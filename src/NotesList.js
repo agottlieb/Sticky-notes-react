@@ -5,7 +5,12 @@ var keepSearchMatches = (note) => note.doesMatchSearch;
 
 var NotesList = (props) => {
   var renderNote = (note) => (
-    <Note note={note} key={note.id} onType={props.onType} />
+    <Note
+      note={note}
+      key={note.id}
+      onType={props.onType}
+      remove={props.remove}
+    />
   );
 
   var searchMatches = props.notes.filter(keepSearchMatches);

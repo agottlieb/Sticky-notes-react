@@ -21,7 +21,7 @@ class App extends Component {
     this.setState({ notes: newNotes });
   };
   //event handle to update both fields of already-made sticky note
-  //editMeId-- if the ID was changed for the note
+  //editMeId-- if the ID was changed for the note/ID
   onType = (editMeId, updatedKey, updatedValue) => {
     //variable that incorporates the whole process- no change, title, descr. change
     var updateIdMatch = (note) => {
@@ -81,6 +81,14 @@ class App extends Component {
       notes: updatedNotes
     });
   };
+  //method to remove notes by removing the note's ID
+    remove = deleteMeId =>  {
+        var notIdMatch = note => note.id !== deleteMeId;
+        var updatedNotes = this.state.notes.filter(notIdMatch);
+        this.setState({ notes: updatedNotes });
+    };
+
+
   render() {
     return (
       <div>
@@ -89,7 +97,8 @@ class App extends Component {
           addNote={this.addNote}
           onSearch={this.onSearch}
         />
-        <NotesList notes={this.state.notes} onType={this.onType} />
+        <NotesList notes={this.state.notes} onType={this.onType} 
+        remove={this.remove}/>
       </div>
     );
   }

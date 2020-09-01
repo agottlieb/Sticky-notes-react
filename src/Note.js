@@ -17,6 +17,7 @@ class Note extends Component {
     var editMeId = this.props.note.id;
     this.props.onType(editMeId, "description", updatedValue);
   };
+
   render() {
     return (
       <li className="note">
@@ -33,7 +34,9 @@ class Note extends Component {
           placeholder="Description..."
           className="note__description"
         />
-        <span className="note__delete">X</span>
+        <span className="note__delete" onClick={this.clickDelete}>
+          X
+        </span>
       </li>
     );
   }
