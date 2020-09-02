@@ -83,6 +83,7 @@ class App extends Component {
   };
   //method to remove notes by removing the note's ID
   remove = (deleteMeId) => {
+    //getting the notes that were not deleted
     var notIdMatch = (note) => note.id !== deleteMeId;
     var updatedNotes = this.state.notes.filter(notIdMatch);
     this.setState({ notes: updatedNotes });

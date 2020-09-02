@@ -17,7 +17,7 @@ class Note extends Component {
     var editMeId = this.props.note.id;
     this.props.onType(editMeId, "description", updatedValue);
   };
-
+  clickDelete = () => this.props.remove(this.props.note.id);
   render() {
     return (
       <li className="note">
